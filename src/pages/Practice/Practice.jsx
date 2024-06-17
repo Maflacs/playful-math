@@ -7,14 +7,13 @@ function Practice() {
   const query = new URLSearchParams(useLocation().search);
   const operation = query.get("operation");
   const range = parseInt(query.get("range"));
-  const language = query.get("language"); // Nyelv paraméterének olvasása
+  const language = query.get("language");
   const [operationText, setOperationText] = useState("");
   const [results, setResults] = useState([]);
   const [correctAnswer, setCorrectAnswer] = useState(null);
   const [isCorrect, setIsCorrect] = useState(false);
   const [wrongAnswerIndex, setWrongAnswerIndex] = useState(null);
   const [selectedResult, setSelectedResult] = useState(null);
-  const [selectedResultText, setSelectedResultText] = useState(null);
   const [score, setScore] = useState(0);
   const [timer, setTimer] = useState(180);
   const [problemsSolved, setProblemsSolved] = useState(0);
@@ -24,35 +23,25 @@ function Practice() {
   useEffect(() => {
     generateOperationAndResults();
 
+    intervalRef.current = setInterval(() => {
+      setTimer((prevTime) => {
+        if (prevTime === 0) {
+          clearInterval(intervalRef.current);
+          setShowModal(true);
+          return 0;
+        }
+        return prevTime - 1;
+      });
+    }, 1000);
+
     return () => clearInterval(intervalRef.current);
   }, []);
 
   useEffect(() => {
-    if (timer === 0) {
-      clearInterval(intervalRef.current);
-      setShowModal(true);
-    } else if (timer > 0) { // Csak akkor csökkentsd a timert, ha nagyobb, mint 0
-      const countdown = setInterval(() => {
-        setTimer((prevTime) => prevTime - 1);
-      }, 1000);
-      return () => clearInterval(countdown);
-    }
-  }, [timer, showModal]);
-  
-
-  useEffect(() => {
     if (isCorrect) {
-      setProblemsSolved(problemsSolved + 1); // Megoldott feladatok számának növelése minden helyes válasz esetén
+      setProblemsSolved((prev) => prev + 1);
     }
   }, [isCorrect]);
-
-  useEffect(() => {
-    const countdown = setInterval(() => {
-      setTimer((prevTime) => prevTime - 1); // Visszaszámlálás az aktuális időből
-    }, 1000);
-  
-    return () => clearInterval(countdown); // Timer leállítása a komponens elvételekor
-  }, []);
 
   const generateOperationAndResults = () => {
     let num1, num2, text, correctResult;
@@ -113,18 +102,19 @@ function Practice() {
     setCorrectAnswer(correctResult);
     setIsCorrect(false);
     setWrongAnswerIndex(null);
+    setSelectedResult(null); // Add this line to reset the selected result
   };
 
   const handleResultClick = (index) => {
     setSelectedResult(index);
-    setSelectedResultText(results[index].text);
     if (results[index].correct) {
       setIsCorrect(true);
-      setScore(score + 1);
+      setScore((prev) => prev + 1);
+      setTimeout(generateOperationAndResults, 500); // Delay the new question generation
     } else {
       setWrongAnswerIndex(index);
+      setIsCorrect(false);
     }
-    generateOperationAndResults(); // Új feladat generálása minden kattintás után
   };
 
   const handleRestartClick = () => {
@@ -133,6 +123,16 @@ function Practice() {
     setShowModal(false);
     setProblemsSolved(0);
     setTimer(180);
+    intervalRef.current = setInterval(() => {
+      setTimer((prevTime) => {
+        if (prevTime === 0) {
+          clearInterval(intervalRef.current);
+          setShowModal(true);
+          return 0;
+        }
+        return prevTime - 1;
+      });
+    }, 1000);
   };
 
   const closeModal = () => {
@@ -201,12 +201,19 @@ function Practice() {
         </div>
       </div>
       {showModal && (
-        <Modal closeModal={closeModal} show={showModal} onClick={handleRestartClick} score={score} home={texts.home} restart={texts.restart} lang={language} timer={texts.timer}/>
+        <Modal
+          closeModal={closeModal}
+          show={showModal}
+          onClick={handleRestartClick}
+          score={score}
+          home={texts.home}
+          restart={texts.restart}
+          lang={language}
+          timer={texts.timer}
+        />
       )}
     </div>
   );
 }
-
-
 
 export default Practice;

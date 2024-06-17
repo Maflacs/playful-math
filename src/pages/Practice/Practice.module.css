@@ -102,4 +102,60 @@
         background-size: cover;
         background-position: center;
     }
+
+    .right {
+      right: -11%;
+      top: 70%;
+    }
+
+    .h2 {
+      width: 25%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+  .h2 {
+     right: 20rem; 
+     width: 30%;
+  }
+  .right {
+    right: -11%;
+    top: 40%;
+  }
+  
+}
+
+@media screen and (max-width: 1000px) {
+  .h2 {
+     right: 15rem; 
+     width: 40%;
+  }
+  .right {
+    top: 60%;
+  }
+
+  .timer {
+    left: 5rem;
+  }
+  
+}
+
+@media screen and (max-width: 700px) {
+  .practice {
+      background-image: url('../../assets/img/HomeBgMob.png')
+  }
+
+  .h2 {
+    right: 20rem;
+    width: 40%;
+  }
+
+  .menu {
+    margin-top: 6rem;
+  }
+}
+
+.timer {
+  left: 3rem;
+  top: 40rem;
 }
