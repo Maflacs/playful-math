@@ -164,15 +164,27 @@ option, select {
 
 @media screen and (max-width: 700px) {
   .home {
-      background-image: url('../../assets/img/HomeBgMob.png')
+      background-image: url('../../assets/img/HomeBgMobSm.png')
   }
 
   .h1 {
-    right: 20rem;
+    right: 15rem;
     width: 30%;
+  }
+
+  h1 {
+    font-size: 18px;
+  }
+
+  h2 {
+    font-size: 16px;
   }
 
   .menu {
     margin-top: 6rem;
+  }
+
+  body {
+    overflow: auto;
   }
 }
