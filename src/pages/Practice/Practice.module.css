@@ -1,0 +1,105 @@
+.practice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../../assets/img/HomeBg.png);
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  overflow: hidden;
+  font-size: 22px;
+}
+
+.link {
+  position: fixed;
+  top: 1rem;
+  text-decoration: none;
+  color: var(--menuFont);
+}
+
+.link:hover {
+    background-color: var(--containerBG);
+    border: solid 3px var(--border);
+    border-radius: 10px;
+    padding: .5rem;
+}
+
+.h2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 20%;
+  width: 22%;
+  background-color: var(--containerBG);
+  position: absolute;
+  border-radius: 10%;
+  top: 5rem;
+  right: 30rem;
+  text-align: center;
+  color: #976829;
+}
+
+.right {
+  width: 0;
+  height: 0;
+  border-left: 2vh solid transparent;
+  border-right: 2vh solid transparent;
+  border-top: 10vh solid #a1b99d;
+  position: absolute;
+  top: 45%;
+  right: -10%;
+  transform: rotate(-60deg);
+}
+
+.timer {
+    background-color: var(--containerBG);
+    border: solid 3px var(--border);
+    border-radius: 10px;
+    color: var(--menuFont);
+    position: fixed;
+    top: 15rem;
+    left: 10rem;
+    padding: .5rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.operation {
+  margin-bottom: 3rem;
+  border: solid 3px var(--border);
+  border-radius: 10px;
+  padding: 0 2rem;
+  background-color: var(--containerBG);
+  color: var(--menuFont);
+}
+
+.results {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.result {
+  margin: 10px;
+  padding: 10px;
+  border: 3px solid var(--border);
+  background-color: var(--containerBG);
+  border-radius: 10px;
+  color: var(--menuFont);
+}
+
+@media screen and (max-width: 1500px) {
+    .practice {
+        background-image: url('../../assets/img/HomeBgMid.png');
+        background-size: cover;
+        background-position: center;
+    }
+}

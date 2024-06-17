@@ -1,0 +1,48 @@
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: var(--menuFont);
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+  width: 300px;
+  text-align: center;
+}
+
+.buttonContainer {
+  margin-top: 20px;
+}
+
+.homeButton,
+.restartButton {
+  background-color: var(--containerBG);
+  border: none;
+  color: var(--menuFont);
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-right: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+
+}
+
+.homeButton:hover,
+.restartButton:hover {
+  background-color: #45a049;
+}
