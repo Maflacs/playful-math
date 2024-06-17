@@ -1,17 +1,18 @@
 {
   "files": {
-    "main.css": "/playful-math/static/css/main.85891d39.css",
-    "main.js": "/playful-math/static/js/main.d4b49a29.js",
+    "main.css": "/playful-math/static/css/main.5697888d.css",
+    "main.js": "/playful-math/static/js/main.9b6a178a.js",
     "static/media/HomeBg.png": "/playful-math/static/media/HomeBg.1eed32c775e0c9f35b90.png",
     "static/media/HomeBgMid.png": "/playful-math/static/media/HomeBgMid.933189e468119881e53d.png",
+    "static/media/HomeBgMob.png": "/playful-math/static/media/HomeBgMob.6dd00c8ed5dcbbe1c970.png",
     "index.html": "/playful-math/index.html",
     "static/media/flagen.svg": "/playful-math/static/media/flagen.6cf90268d11449c43485e377d66bc8b0.svg",
     "static/media/flaghu.svg": "/playful-math/static/media/flaghu.cb329e885950a7c054075d78aa6f1364.svg",
-    "main.85891d39.css.map": "/playful-math/static/css/main.85891d39.css.map",
-    "main.d4b49a29.js.map": "/playful-math/static/js/main.d4b49a29.js.map"
+    "main.5697888d.css.map": "/playful-math/static/css/main.5697888d.css.map",
+    "main.9b6a178a.js.map": "/playful-math/static/js/main.9b6a178a.js.map"
   },
   "entrypoints": [
-    "static/css/main.85891d39.css",
-    "static/js/main.d4b49a29.js"
+    "static/css/main.5697888d.css",
+    "static/js/main.9b6a178a.js"
   ]
 }
