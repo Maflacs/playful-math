@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/math-practice-app/static/css/main.a6cca618.css",
+    "main.js": "/math-practice-app/static/js/main.cc71ad47.js",
+    "static/media/HomeBg.png": "/math-practice-app/static/media/HomeBg.1eed32c775e0c9f35b90.png",
+    "static/media/HomeBgMid.png": "/math-practice-app/static/media/HomeBgMid.933189e468119881e53d.png",
+    "index.html": "/math-practice-app/index.html",
+    "static/media/flagen.svg": "/math-practice-app/static/media/flagen.6cf90268d11449c43485e377d66bc8b0.svg",
+    "static/media/flaghu.svg": "/math-practice-app/static/media/flaghu.cb329e885950a7c054075d78aa6f1364.svg",
+    "main.a6cca618.css.map": "/math-practice-app/static/css/main.a6cca618.css.map",
+    "main.cc71ad47.js.map": "/math-practice-app/static/js/main.cc71ad47.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a6cca618.css",
+    "static/js/main.cc71ad47.js"
+  ]
+}
