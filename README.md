@@ -2,7 +2,7 @@
 
 ### Links
 
-- Live Site URL: https://maflacs.github.io/clicker/
+- Live Site URL: https://maflacs.github.io/playful-math/
 
 
 ### Built with
