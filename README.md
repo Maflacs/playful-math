@@ -2,7 +2,7 @@
 
 ### Links
 
-...
+- Live Site URL: https://maflacs.github.io/clicker/
 
 
 ### Built with
