@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/playful-math/static/css/main.64e6dc29.css",
+    "main.css": "/playful-math/static/css/main.3a1b760a.css",
     "main.js": "/playful-math/static/js/main.9b6a178a.js",
     "static/media/HomeBg.png": "/playful-math/static/media/HomeBg.1eed32c775e0c9f35b90.png",
     "static/media/HomeBgMid.png": "/playful-math/static/media/HomeBgMid.933189e468119881e53d.png",
@@ -9,11 +9,11 @@
     "index.html": "/playful-math/index.html",
     "static/media/flagen.svg": "/playful-math/static/media/flagen.6cf90268d11449c43485e377d66bc8b0.svg",
     "static/media/flaghu.svg": "/playful-math/static/media/flaghu.cb329e885950a7c054075d78aa6f1364.svg",
-    "main.64e6dc29.css.map": "/playful-math/static/css/main.64e6dc29.css.map",
+    "main.3a1b760a.css.map": "/playful-math/static/css/main.3a1b760a.css.map",
     "main.9b6a178a.js.map": "/playful-math/static/js/main.9b6a178a.js.map"
   },
   "entrypoints": [
-    "static/css/main.64e6dc29.css",
+    "static/css/main.3a1b760a.css",
     "static/js/main.9b6a178a.js"
   ]
 }
