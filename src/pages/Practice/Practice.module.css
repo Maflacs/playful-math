@@ -25,6 +25,10 @@
     padding: .5rem;
 }
 
+h2 {
+  z-index: 100;
+}
+
 .h2 {
   display: flex;
   flex-direction: column;
@@ -39,6 +43,7 @@
   right: 30rem;
   text-align: center;
   color: #976829;
+  z-index: 10;
 }
 
 .right {
@@ -105,7 +110,6 @@
 
     .right {
       right: -11%;
-      top: 70%;
     }
 
     .h2 {
@@ -118,10 +122,6 @@
      right: 20rem; 
      width: 30%;
   }
-  .right {
-    right: -11%;
-    top: 40%;
-  }
   
 }
 
@@ -129,13 +129,13 @@
   .h2 {
      right: 15rem; 
      width: 40%;
+     font-size: 18px;
   }
-  .right {
-    top: 60%;
-  }
-
   .timer {
     left: 5rem;
+  }
+  .right {
+    margin-right: 1rem;
   }
   
 }
