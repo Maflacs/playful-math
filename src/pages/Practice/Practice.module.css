@@ -185,7 +185,18 @@ h2 {
 
 .timer {
   left: 15rem;
-  top: 40rem;
+  top: 38rem;
 }
 
+}
+
+@media screen and (max-width: 500px) {
+.h2{
+  width: 50%;
+  right: 10rem;
+}
+
+.right {
+  top: 20%;
+}
 }

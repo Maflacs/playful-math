@@ -175,7 +175,23 @@ option, select {
     margin-top: 6rem;
   }
 
+  .menuItem {
+    margin: .5rem auto;
+  }
+
   body {
     overflow: auto;
   }
+}
+
+@media screen and (max-width: 500px) {
+  .h1{
+    width: 50%;
+    right: 10rem;
+  }
+
+.right {
+  top: 20%;
+}
+
 }
