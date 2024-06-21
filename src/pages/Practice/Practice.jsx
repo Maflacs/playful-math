@@ -2,6 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./Practice.module.css";
 import Modal from "../../components/Modal/Modal";
+import topL from "../../assets/img/TopLeft.png";
+import topR from "../../assets/img/TopRight.png";
+import house from "../../assets/img/House.png";
+import bunny from "../../assets/img/Bunny.png";
 
 function Practice() {
   const query = new URLSearchParams(useLocation().search);
@@ -82,7 +86,7 @@ function Practice() {
     } while (correctResult > range);
 
     const generatedResults = [{ value: correctResult, correct: true }];
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 5; i++) {
       let result;
       do {
         result = correctResult + (Math.floor(Math.random() * 5) + 1);
@@ -160,58 +164,76 @@ function Practice() {
 
   return (
     <div className={styles.practice}>
-      <Link className={styles.link} to="/">
-        {texts.home}
-      </Link>
-      <div className={styles.timer}>
-        {Math.floor(timer / 60)}:{("0" + (timer % 60)).slice(-2)}
+      <div>
+        <img src={topL} alt="" />
       </div>
-      <div className={styles.h2}>
-        <h2>{texts.title}</h2>
-        <div className={styles.right}></div>
-      </div>
-      <div className={styles.container}>
-        <div className={styles.operation}>
-          <p>{operationText} = ?</p>
-        </div>
-        <div className={styles.results}>
-          {results.map((result, index) => (
-            <div
-              className={styles.result}
-              key={result.id}
-              style={{
-                backgroundColor:
-                  selectedResult === index
-                    ? isCorrect
-                      ? "green"
-                      : wrongAnswerIndex === index
-                      ? "red"
-                      : ""
-                    : "",
-                cursor:
-                  isCorrect || index === wrongAnswerIndex
-                    ? "not-allowed"
-                    : "pointer",
-              }}
-              onClick={() => handleResultClick(index)}
-            >
-              {result.text}
-            </div>
-          ))}
+      <div className={styles.welcome}>
+        <Link className={styles.link} to="/">
+          {texts.home}
+        </Link>
+        <div className={styles.h2}>
+          <h2>{texts.title}</h2>
+          <div className={styles.right}></div>
         </div>
       </div>
-      {showModal && (
-        <Modal
-          closeModal={closeModal}
-          show={showModal}
-          onClick={handleRestartClick}
-          score={score}
-          home={texts.home}
-          restart={texts.restart}
-          lang={language}
-          timer={texts.timer}
-        />
-      )}
+      <div>
+        <img src={topR} alt="" />
+      </div>
+      <div></div>
+        <div className={styles.container}>
+          <div className={styles.operation}>
+            <p>{operationText} = ?</p>
+          </div>
+          <div className={styles.results}>
+            {results.map((result, index) => (
+              <div
+                className={styles.result}
+                key={result.id}
+                style={{
+                  backgroundColor:
+                    selectedResult === index
+                      ? isCorrect
+                        ? "green"
+                        : wrongAnswerIndex === index
+                        ? "red"
+                        : ""
+                      : "",
+                  cursor:
+                    isCorrect || index === wrongAnswerIndex
+                      ? "not-allowed"
+                      : "pointer",
+                }}
+                onClick={() => handleResultClick(index)}
+              >
+                {result.text}
+              </div>
+            ))}
+          </div>
+        {showModal && (
+          <Modal
+            closeModal={closeModal}
+            show={showModal}
+            onClick={handleRestartClick}
+            score={score}
+            home={texts.home}
+            restart={texts.restart}
+            lang={language}
+            timer={texts.timer}
+          />
+        )}
+        </div>
+      <div></div>
+      <div className={styles.bottom}>
+        <img src={house} alt="" />
+      </div>
+      <div className={styles.timerContainer}>
+        <div className={styles.timer}>
+          {Math.floor(timer / 60)}:{("0" + (timer % 60)).slice(-2)}
+        </div>
+      </div>
+      <div className={styles.bottom}>
+        <img src={bunny} alt="bunny" />
+      </div>
     </div>
   );
 }
