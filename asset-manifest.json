@@ -1,20 +1,21 @@
 {
   "files": {
-    "main.css": "/playful-math/static/css/main.6cb30520.css",
-    "main.js": "/playful-math/static/js/main.0b8510e8.js",
+    "main.css": "/playful-math/static/css/main.be5391d1.css",
+    "main.js": "/playful-math/static/js/main.ce2d232f.js",
     "static/media/Bg.png": "/playful-math/static/media/Bg.4386588b3c7ff2974cb1.png",
-    "static/media/House.png": "/playful-math/static/media/House.cef741676b2f282d3412.png",
-    "static/media/Bunny.png": "/playful-math/static/media/Bunny.f155f9b05d0be4e139a6.png",
-    "static/media/TopLeft.png": "/playful-math/static/media/TopLeft.621ccc5bed847b62547c.png",
-    "static/media/TopRight.png": "/playful-math/static/media/TopRight.2992147e01077e74b976.png",
+    "static/media/achievement.wav": "/playful-math/static/media/achievement.2905e4bb22b60e103cfd.wav",
+    "static/media/House.png": "/playful-math/static/media/House.c197ed25237fab65026e.png",
+    "static/media/Bunny.png": "/playful-math/static/media/Bunny.f9178b942219ee80aac9.png",
+    "static/media/TopLeft.png": "/playful-math/static/media/TopLeft.843b1ba2238966f40e8a.png",
+    "static/media/TopRight.png": "/playful-math/static/media/TopRight.11a0f47443849209d2e9.png",
     "index.html": "/playful-math/index.html",
     "static/media/flagen.svg": "/playful-math/static/media/flagen.6cf90268d11449c43485e377d66bc8b0.svg",
     "static/media/flaghu.svg": "/playful-math/static/media/flaghu.cb329e885950a7c054075d78aa6f1364.svg",
-    "main.6cb30520.css.map": "/playful-math/static/css/main.6cb30520.css.map",
-    "main.0b8510e8.js.map": "/playful-math/static/js/main.0b8510e8.js.map"
+    "main.be5391d1.css.map": "/playful-math/static/css/main.be5391d1.css.map",
+    "main.ce2d232f.js.map": "/playful-math/static/js/main.ce2d232f.js.map"
   },
   "entrypoints": [
-    "static/css/main.6cb30520.css",
-    "static/js/main.0b8510e8.js"
+    "static/css/main.be5391d1.css",
+    "static/js/main.ce2d232f.js"
   ]
 }
