@@ -6,6 +6,8 @@ import topL from "../../assets/img/TopLeft.png";
 import topR from "../../assets/img/TopRight.png";
 import house from "../../assets/img/House.png";
 import bunny from "../../assets/img/Bunny.png";
+import ReactTypingEffect from "react-typing-effect";
+import record from "../../assets/sounds/achievement.wav"
 
 function Practice() {
   const query = new URLSearchParams(useLocation().search);
@@ -19,14 +21,15 @@ function Practice() {
   const [wrongAnswerIndex, setWrongAnswerIndex] = useState(null);
   const [selectedResult, setSelectedResult] = useState(null);
   const [score, setScore] = useState(0);
+  const [bestScore, setBestScore] = useState(() => localStorage.getItem("bestScore") || 0);
   const [timer, setTimer] = useState(180);
   const [problemsSolved, setProblemsSolved] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  const [h2Text, setH2Text] = useState("");
   const intervalRef = useRef(null);
 
   useEffect(() => {
     generateOperationAndResults();
-
     intervalRef.current = setInterval(() => {
       setTimer((prevTime) => {
         if (prevTime === 0) {
@@ -94,7 +97,6 @@ function Practice() {
       generatedResults.push({ value: result, correct: false });
     }
     generatedResults.sort(() => Math.random() - 0.5);
-
     setOperationText(text);
     setResults(
       generatedResults.map((result, index) => ({
@@ -106,7 +108,8 @@ function Practice() {
     setCorrectAnswer(correctResult);
     setIsCorrect(false);
     setWrongAnswerIndex(null);
-    setSelectedResult(null); // Add this line to reset the selected result
+    setSelectedResult(null); // Reset the selected result
+    setH2Text("");
   };
 
   const handleResultClick = (index) => {
@@ -114,10 +117,12 @@ function Practice() {
     if (results[index].correct) {
       setIsCorrect(true);
       setScore((prev) => prev + 1);
+      setH2Text("😊");
       setTimeout(generateOperationAndResults, 500); // Delay the new question generation
     } else {
       setWrongAnswerIndex(index);
       setIsCorrect(false);
+      setH2Text("😢");
     }
   };
 
@@ -143,18 +148,38 @@ function Practice() {
     setShowModal(false);
   };
 
+  useEffect(() => {
+    if (showModal) {
+      const currentBestScore = localStorage.getItem("bestScore") || 0;
+      if (score > currentBestScore) {
+        localStorage.setItem("bestScore", score);
+        setBestScore(score);
+        playFireworkSound();
+      } else {
+        setBestScore(currentBestScore);
+      }
+    }
+  }, [showModal, score]);
+
+  const playFireworkSound = () => {
+    const audio = new Audio(record);
+    audio.play();
+  };
+
   const labels = {
     en: {
       home: "Settings",
       title: "Click on the number that fits in the place of the ?",
-      timer: "Unfortunately, your time has run out :(",
+      timer: "Unfortunately, your time has run out 😢",
+      newRecord: "Congratulations, you've broken your record 😊",
       restart: "Restart",
       score: "Score",
     },
     hu: {
       home: "Beállítások",
       title: "Kattints arra a számra, amelyik illik a ? helyére",
-      timer: "Sajnos lejárt az időd :(",
+      timer: "Sajnos lejárt az időd 😢",
+      newRecord: "Gratulálok, megdöntötted a rekordod 😊",
       restart: "Újraindítás",
       score: "Pontszám",
     },
@@ -172,8 +197,12 @@ function Practice() {
           {texts.home}
         </Link>
         <div className={styles.h2}>
-          <h2>{texts.title}</h2>
-          <div className={styles.right}></div>
+          <h2>{h2Text || (<ReactTypingEffect
+            text={texts.title}
+            speed={100}
+            eraseSpeed={50}
+            typingDelay={1050}
+            eraseDelay={20050} />)}</h2>
         </div>
       </div>
       <div>
@@ -215,10 +244,13 @@ function Practice() {
             show={showModal}
             onClick={handleRestartClick}
             score={score}
+            bestScore={bestScore}
             home={texts.home}
             restart={texts.restart}
             lang={language}
             timer={texts.timer}
+            newRecord={texts.newRecord}
+            congrats={score > bestScore ? texts.congrats : ""}
           />
         )}
         </div>

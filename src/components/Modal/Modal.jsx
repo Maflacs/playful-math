@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Modal.module.css";
 import { Link } from "react-router-dom";
 
-const Modal = ({ show, onClick, score, home, restart, timer }) => {
+const Modal = ({ lang, show, onClick, score, bestScore, home, restart, timer, newRecord, congrats }) => {
   if (!show) {
     return null;
   }
@@ -10,8 +10,10 @@ const Modal = ({ show, onClick, score, home, restart, timer }) => {
   return (
     <div className={styles.modalBackdrop}>
       <div className={styles.modalContent}>
-        <p>{timer}</p>
-        <p>score: {score}</p>
+      <h2>{score < bestScore ? timer : newRecord}</h2>
+        <p>{lang === "hu" ? "Pontszámod" : "Your Score"}: {score}</p>
+        <p>{lang === "hu" ? "Legjobb pontszám" : "Best Score"}: {bestScore}</p>
+        {congrats && <p className={styles.congrats}>{congrats}</p>}
         <div className={styles.buttonContainer}>
           <Link className={styles.homeButton} to="/">
             {home}

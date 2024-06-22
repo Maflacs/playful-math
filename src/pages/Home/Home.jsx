@@ -7,6 +7,7 @@ import topL from "../../assets/img/TopLeft.png";
 import topR from "../../assets/img/TopRight.png";
 import house from "../../assets/img/House.png";
 import bunny from "../../assets/img/Bunny.png";
+import ReactTypingEffect from "react-typing-effect";
 
 function Home() {
   const [operation, setOperation] = useState("add-sub");
@@ -55,8 +56,15 @@ function Home() {
       <div className={styles.welcome}>
         <div className={styles.h1}>
           <h1>{texts.title1}</h1>
-          <h2>{texts.title2}</h2>
-          <div className={styles.right}></div>
+          <h2>
+            <ReactTypingEffect
+              text={texts.title2}
+              speed={100}
+              eraseSpeed={50}
+              typingDelay={1050}
+              eraseDelay={20050}
+            />
+          </h2>
         </div>
       </div>
       <div>
@@ -65,7 +73,7 @@ function Home() {
       <div></div>
       <div className={styles.menuContainer}>
         <div className={styles.menu}>
-          <div>
+          <div className={styles.language}>
             <label>
               <div className={styles.customSelect}>
                 <div className={styles.selectedOption}>
@@ -92,7 +100,7 @@ function Home() {
             </label>
           </div>
           <div className={styles.menuItem}>
-            <label>
+            <label className={styles.operation}>
               <select
                 value={operation}
                 onChange={(e) => setOperation(e.target.value)}

@@ -4,19 +4,18 @@
   background-size: cover;
   height: 100dvh;
   overflow: hidden;
-  display: grid; 
-  grid-auto-columns: 1fr; 
-  grid-auto-rows: 1fr; 
-  grid-template-columns: 0.5fr 2fr 0.5fr; 
-  grid-template-rows: 1fr 1fr 1fr; 
-  gap: 0px 0px; 
-  grid-template-areas: 
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 0.5fr 2fr 0.5fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
     ". . ."
     ". . ."
-    ". . ."; 
-  justify-items: stretch; 
-  width: 100%; 
-  
+    ". . .";
+  justify-items: stretch;
+  width: 100%;
 }
 
 .welcome {
@@ -33,27 +32,19 @@
   background-color: var(--containerBG);
   border-radius: 10%;
   text-align: center;
-  color: #976829;
-  padding: 2rem .5rem;
-  position: relative;
-  
+  color: var(--menuFont);
+  padding: 0.5rem;
+  border: solid 3px var(--border);
+  min-width: 15%;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
 h2 {
   margin-top: 0;
-  z-index: 100;
-}
-
-.right {
-  width: 0;
-  height: 0;
-  border-left: 2vh solid transparent;
-  border-right: 2vh solid transparent;
-  border-top: 10vh solid #a1b99d;
-  position: absolute;
-  top: 70%;
-  right: 50%;
-  transform: rotate(-60deg);
 }
 
 .menuContainer {
@@ -72,14 +63,21 @@ h2 {
   border: solid 3px var(--border);
   border-radius: 10px;
   padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
 .menuItem {
   margin: 1rem auto;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
 .customSelect {
+  position: relative;
   display: inline-block;
   width: 40px;
 }
@@ -95,12 +93,12 @@ h2 {
 
 .options {
   display: none;
+  position: absolute;
   top: 100%;
   left: 0;
   width: 100%;
   border: 1px solid var(--border);
   background: var(--containerBG);
-  z-index: 1;
 }
 
 .option {
@@ -119,26 +117,27 @@ h2 {
 }
 
 button {
-    padding: 5px;
-    margin: 1rem auto;
-    align-items: center;
-    background-color: var(--menuFont);
-    color: white;
-    border: solid 2px var(--border);
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  padding: 5px;
+  margin: 1rem auto;
+  align-items: center;
+  background-color: var(--menuFont);
+  color: white;
+  border: solid 2px var(--border);
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
-option, select {
-    padding: 1rem;
-    font-size: 16px;
-    background-color: var(--containerBG);
-    color: var(--menuFont);
+option,
+select {
+  padding: 1rem;
+  font-size: 16px;
+  background-color: var(--containerBG);
+  color: var(--menuFont);
 }
 
-img{ 
+img {
   width: 100%;
-  opacity: .8;
   border-radius: 10%;
 }
 
@@ -150,41 +149,43 @@ img{
 
 @media screen and (max-width: 1550px) {
   .home {
-    grid-template-columns: 0.7fr 1.6fr 0.7fr; 
+    grid-template-columns: 0.7fr 1.6fr 0.7fr;
+  }
+  .h1 {
+    min-width: 30%;
   }
 }
 
 @media screen and (max-width: 1100px) {
   .home {
-    grid-template-columns: 0.8fr 1.4fr 0.8fr; 
+    grid-template-columns: 0.8fr 1.4fr 0.8fr;
+  }
+  .h1 {
+    min-width: 45%;
   }
 }
 
 @media screen and (max-width: 900px) {
   .home {
-    grid-template-columns: 0.9fr 1.2fr 0.9fr; 
+    grid-template-columns: 0.9fr 1.2fr 0.9fr;
   }
-
-}
-
-@media screen and (max-width: 800px) {
   .h1 {
-    padding: 0;
+    min-width: 60%;
   }
 }
 
 @media screen and (max-width: 700px) {
   .home {
-    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-columns: 1fr 1fr 1fr;
   }
-
+  .h1 {
+    padding: 0.2rem;
+    min-width: 95%;
+  }
 }
 
 @media screen and (max-width: 380px) {
- 
   .h1 {
-    padding: .1rem;
+    min-width: 100%;
   }
 }
-
-
