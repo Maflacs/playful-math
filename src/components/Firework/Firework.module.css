@@ -1,0 +1,14 @@
+.fireworkContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100dvh;
+  }
+  
+  iframe {
+    pointer-events: none;
+    border: none;
+    width: 100%;
+    height: 100%;
+  }

@@ -8,6 +8,7 @@ import house from "../../assets/img/House.png";
 import bunny from "../../assets/img/Bunny.png";
 import ReactTypingEffect from "react-typing-effect";
 import record from "../../assets/sounds/achievement.wav"
+import Firework from "../../components/Firework/Firework";
 
 function Practice() {
   const query = new URLSearchParams(useLocation().search);
@@ -251,6 +252,7 @@ function Practice() {
             timer={texts.timer}
             newRecord={texts.newRecord}
             congrats={score > bestScore ? texts.congrats : ""}
+            firework={score >= bestScore ? <Firework /> : "null"}
           />
         )}
         </div>

@@ -8,16 +8,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 100;
 }
+
 
 .modalContent {
   background: var(--menuFont);
   color: white;
-  padding: 20px;
-  border-radius: 8px;
+  padding: 2rem;
+  border-radius: 10px;
   position: relative;
-  width: 300px;
+  width: 400px;
   text-align: center;
   border: 3px solid var(--border);
   box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
