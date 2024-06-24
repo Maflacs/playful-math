@@ -8,6 +8,7 @@ const Menu = ({
   setLanguage,
   operation,
   setOperation,
+  readWrite,
   addSub,
   mulDiv,
   range,
@@ -53,10 +54,11 @@ const Menu = ({
             >
               <option value="add-sub">{addSub}</option>
               <option value="mul-div">{mulDiv}</option>
+              <option value="read-write">{readWrite}</option>
             </select>
           </label>
         </div>
-        {operation !== "mul-div" && (
+        {operation === "add-sub" && (
           <div className={styles.menuItem}>
             <label>
               <select

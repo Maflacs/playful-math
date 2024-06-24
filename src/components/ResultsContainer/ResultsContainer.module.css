@@ -16,6 +16,37 @@
     box-shadow: var(--shadow);
   }
 
+  .result.correct {
+    background-color: green;
+    cursor: not-allowed;
+  }
+  
+  .result.incorrect {
+    background-color: red;
+    cursor: not-allowed;
+  }
+
+  .result.disabled {
+    cursor: not-allowed;
+  }
+
+  .input {
+    padding: 1rem;
+    font-size: 16px;
+    border: var(--border);
+    border-radius: 10px;
+    color: var(--menuFont);
+  }
+  
+  .correct {
+    background-color: #ACD793;
+  }
+  
+  .incorrect {
+    background-color: #FFA27F;
+  }
+  
+
   @media screen and (max-width: 700px) {
     .practice {
       grid-template-columns: 1fr 1fr 1fr;

@@ -54,6 +54,7 @@ function Home() {
         setLanguage={handleLanguageChange}
         operation={operation}
         setOperation={setOperation}
+        readWrite={texts.readWrite}
         addSub={texts.addSub}
         mulDiv={texts.mulDiv}
         range={range}
