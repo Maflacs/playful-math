@@ -1,0 +1,15 @@
+.timerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+  }
+  
+  .timer {
+    background-color: var(--containerBG);
+    border: solid 3px var(--border);
+    border-radius: 10px;
+    color: var(--menuFont);
+    padding: 0.5rem;
+    box-shadow: var(--shadow);
+  }

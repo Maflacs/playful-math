@@ -1,0 +1,45 @@
+.h2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--containerBG);
+    border-radius: 10px;
+    text-align: center;
+    color: var(--menuFont);
+    padding: 0.5rem;
+    margin-top: 3rem;
+    border: 3px solid var(--border);
+    min-width: 30%;
+    box-shadow: var(--shadow);
+  }
+
+  @media screen and (max-width: 1550px) {
+    .h2 {
+      min-width: 45%;
+    }
+  }
+
+  @media screen and (max-width: 1100px) {
+    .h2 {
+      min-width: 70%;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .h2 {
+      min-width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 700px) {
+    h2 {
+      font-size: 18px;
+    }
+  }
+
+  @media screen and (max-width: 380px) {
+    .h2 {
+      padding: 0.1rem;
+    }
+  }
