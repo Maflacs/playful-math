@@ -12,7 +12,7 @@ import Menu from "../../components/Menu/Menu";
 function Home() {
   const [operation, setOperation] = useState("add-sub");
   const [range, setRange] = useState(10);
-  const [language, setLanguage] = useState("hu"); // Default language
+  const [language, setLanguage] = useState(localStorage.getItem('language') || "hu"); // Load from localStorage or default to "hu"
   const [typingKey, setTypingKey] = useState(0);
   const navigate = useNavigate();
 
@@ -32,6 +32,7 @@ function Home() {
 
   const handleLanguageChange = (lang) => {
     setLanguage(lang);
+    localStorage.setItem('language', lang);
     setTypingKey((prevKey) => prevKey + 1); // Increment key to reset ReactTypingEffect
   };
 

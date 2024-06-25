@@ -22,9 +22,11 @@ export const generateOperationAndResults = (
     setH2Text("");
     return;
   }
-  
+
   let num1, num2, text, correctResult;
-  do {
+  const maxTries = 100;
+
+  for (let i = 0; i < maxTries; i++) {
     switch (operation) {
       case "add-sub":
         if (Math.random() < 0.5) {
@@ -46,10 +48,14 @@ export const generateOperationAndResults = (
           text = `${num1} × ${num2}`;
           correctResult = num1 * num2;
         } else {
-          do {
+          num1 = Math.floor(Math.random() * range) + 1;
+          num2 = Math.floor(Math.random() * range) + 1;
+          correctResult = num1 * num2;
+          while (correctResult > range || num1 % num2 !== 0 || num1 / num2 > range) {
             num1 = Math.floor(Math.random() * range) + 1;
             num2 = Math.floor(Math.random() * range) + 1;
-          } while (num1 % num2 !== 0);
+            correctResult = num1 * num2;
+          }
           text = `${num1} ÷ ${num2}`;
           correctResult = num1 / num2;
         }
@@ -57,16 +63,19 @@ export const generateOperationAndResults = (
       default:
         break;
     }
-  } while (correctResult > range);
+
+    if (correctResult <= range) break;
+  }
 
   const generatedResults = [{ value: correctResult, correct: true }];
-  for (let i = 0; i < 5; i++) {
+  while (generatedResults.length < 6) {
     let result;
     do {
-      result = correctResult + (Math.floor(Math.random() * 5) + 1);
-    } while (generatedResults.some((r) => r.value === result));
+      result = Math.floor(Math.random() * range * 2) - range;
+    } while (result <= 0 || result > range || generatedResults.some(r => r.value === result));
     generatedResults.push({ value: result, correct: false });
   }
+
   generatedResults.sort(() => Math.random() - 0.5);
   setOperationText(text);
   setResults(
@@ -79,9 +88,10 @@ export const generateOperationAndResults = (
   setCorrectAnswer(correctResult);
   setIsCorrect(false);
   setWrongAnswerIndex(null);
-  setSelectedResult(null); 
+  setSelectedResult(null);
   setH2Text("");
 };
+
 
 export const handleResultClick = (
   operation,
@@ -96,8 +106,9 @@ export const handleResultClick = (
   setWrongAnswerIndex,
   generateOperationAndResults
 ) => {
+  setSelectedResult(index); 
+  
   if (operation === "read-write") {
-    setSelectedResult(index);
     if (checkUserInput(userInput, correctAnswer)) {
       setIsCorrect(true);
       setScore((prev) => prev + 1);
@@ -108,7 +119,6 @@ export const handleResultClick = (
       setH2Text("😢");
     }
   } else {
-    setSelectedResult(index);
     if (results[index].correct) {
       setIsCorrect(true);
       setScore((prev) => prev + 1);
@@ -121,6 +131,7 @@ export const handleResultClick = (
     }
   }
 };
+
 
 export const handleKeyPress = (
   e,

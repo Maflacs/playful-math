@@ -1,9 +1,10 @@
 import React from "react";
 import styles from "./ResultsContainer.module.css";
-import { handleKeyPress } from "../../utils/Functions";
+import { handleKeyPress,handleResultClick, generateOperationAndResults } from "../../utils/Functions";
 
 const ResultsContainer = ({
   results,
+  range, 
   selectedResult,
   isCorrect,
   wrongAnswerIndex,
@@ -35,7 +36,7 @@ const ResultsContainer = ({
       () =>
         generateOperationAndResults(
           operation,
-          100, 
+          range,
           setOperationText,
           setResults,
           setCorrectAnswer,
@@ -44,26 +45,9 @@ const ResultsContainer = ({
           setSelectedResult,
           setH2Text,
           wordList,
-          setUserInput
+          setUserInput,
         )
     );
-  };
-
-  const getClassNames = (index) => {
-    let classNames = styles.result;
-    if (selectedResult === index) {
-      if (isCorrect) {
-        classNames += ` ${styles.correct}`;
-      } else if (wrongAnswerIndex === index) {
-        classNames += ` ${styles.incorrect}`;
-      } else {
-        classNames += ` ${styles.selected}`;
-      }
-    }
-    if (isCorrect || index === wrongAnswerIndex) {
-      classNames += ` ${styles.disabled}`;
-    }
-    return classNames;
   };
 
   return (
@@ -79,9 +63,42 @@ const ResultsContainer = ({
       ) : (
         results.map((result, index) => (
           <div
+            className={`${styles.result} ${
+              selectedResult === index
+                ? isCorrect
+                  ? styles.correct
+                  : wrongAnswerIndex === index
+                  ? styles.incorrect
+                  : ""
+                : ""
+            }`}
             key={result.id}
-            className={getClassNames(index)}
-            onClick={() => handleResultClick(index)}
+            onClick={() => handleResultClick(
+              operation,
+              userInput,
+              correctAnswer,
+              index,
+              results,
+              setSelectedResult,
+              setIsCorrect,
+              setScore,
+              setH2Text,
+              setWrongAnswerIndex,
+              () =>
+                generateOperationAndResults(
+                  operation,
+                  range,
+                  setOperationText,
+                  setResults,
+                  setCorrectAnswer,
+                  setIsCorrect,
+                  setWrongAnswerIndex,
+                  setSelectedResult,
+                  setH2Text,
+                  wordList,
+                  setUserInput,
+                )
+            )}
           >
             {result.text}
           </div>

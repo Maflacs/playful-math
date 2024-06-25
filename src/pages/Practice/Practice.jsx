@@ -144,6 +144,8 @@ function Practice() {
         </div>
         <ResultsContainer
           results={results}
+          range={range}
+          setResults={setResults}
           selectedResult={selectedResult}
           isCorrect={isCorrect}
           wrongAnswerIndex={wrongAnswerIndex}
