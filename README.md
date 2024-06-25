@@ -1,4 +1,4 @@
-## This is a website where children can practice basic math operations in a fairy-tale environment while playing games.
+## This is a website where children can practice basic math operations and learn correct spelling in a fairy-tale environment while playing games.
 
 ### Links
 

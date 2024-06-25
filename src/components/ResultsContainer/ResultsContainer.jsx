@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./ResultsContainer.module.css";
-import { handleKeyPress,handleResultClick, generateOperationAndResults } from "../../utils/Functions";
+import { handleKeyPress} from "../../utils/Functions";
 
 const ResultsContainer = ({
   results,
