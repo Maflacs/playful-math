@@ -12,6 +12,7 @@ export const generateOperationAndResults = (
   setUserInput
 ) => {
   if (operation === "read-write") {
+    // Generate a random word and shuffle it for the "read-write" operation
     const word = wordList[Math.floor(Math.random() * wordList.length)];
     setOperationText(shuffleWord(word));
     setCorrectAnswer(word);
@@ -27,6 +28,7 @@ export const generateOperationAndResults = (
   const maxTries = 100;
 
   for (let i = 0; i < maxTries; i++) {
+    // Generate math operations based on the selected operation type
     switch (operation) {
       case "add-sub":
         if (Math.random() < 0.5) {
@@ -64,9 +66,11 @@ export const generateOperationAndResults = (
         break;
     }
 
+    // Ensure the correct result is within the specified range
     if (correctResult <= range) break;
   }
 
+  // Generate incorrect results and shuffle them with the correct result
   const generatedResults = [{ value: correctResult, correct: true }];
   while (generatedResults.length < 6) {
     let result;
@@ -92,7 +96,6 @@ export const generateOperationAndResults = (
   setH2Text("");
 };
 
-
 export const handleResultClick = (
   operation,
   userInput,
@@ -107,7 +110,8 @@ export const handleResultClick = (
   generateOperationAndResults
 ) => {
   setSelectedResult(index); 
-  
+
+  // Handle result click for "read-write" operation
   if (operation === "read-write") {
     if (checkUserInput(userInput, correctAnswer)) {
       setIsCorrect(true);
@@ -119,6 +123,7 @@ export const handleResultClick = (
       setH2Text("😢");
     }
   } else {
+    // Handle result click for math operations
     if (results[index].correct) {
       setIsCorrect(true);
       setScore((prev) => prev + 1);
@@ -132,7 +137,6 @@ export const handleResultClick = (
   }
 };
 
-
 export const handleKeyPress = (
   e,
   operation,
@@ -141,8 +145,9 @@ export const handleKeyPress = (
   setIsCorrect,
   setScore,
   setH2Text,
-  generateNextProblem
+  generateNextProblem,
 ) => {
+  // Handle "Enter" key press for "read-write" operation
   if (e.key === "Enter" && operation === "read-write") {
     if (userInput.trim().toLowerCase() === correctAnswer.trim().toLowerCase()) {
       setIsCorrect(true);
@@ -163,13 +168,14 @@ export const handleKeyPress = (
   }
 };
 
-
 export const playFireworkSound = (record) => {
+  // Play firework sound
   const audio = new Audio(record);
   audio.play();
 };
 
 export const shuffleWord = (word) => {
+  // Shuffle the characters in a word
   const shuffled = word
     .split("")
     .sort(() => 0.5 - Math.random())
@@ -178,5 +184,6 @@ export const shuffleWord = (word) => {
 };
 
 export const checkUserInput = (userInput, correctAnswer) => {
+  // Check if user input matches the correct answer
   return userInput.toLowerCase() === correctAnswer.toLowerCase();
 };

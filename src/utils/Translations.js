@@ -14,6 +14,7 @@ const labels = {
     restart: "Restart",
     score: "Score",
     readWrite: "Reading/Writing",
+    helpRequest: "Request Help",
     wordList: [
       "cat", "dog", "elephant", "computer", "house", "mouse", "snake", "tiger", "car", "bicycle",
       "table", "chair", "window", "door", "wall", "floor", "ceiling", "lamp", "lampshade", "curtain",
@@ -42,6 +43,7 @@ const labels = {
     restart: "Újraindítás",
     score: "Pontszám",
     readWrite: "Olvasás/Írás",
+    helpRequest: "Segítséget kérek",
     wordList: [
       "macska", "kutya", "elefánt", "számítógép", "ház", "egér", "kígyó", "tigris", "autó", "bicikli",
       "asztal", "szék", "ablak", "ajtó", "fal", "padló", "mennyezet", "lámpa", "lámpaernyő", "függöny",

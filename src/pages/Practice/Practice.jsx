@@ -23,6 +23,8 @@ function Practice() {
   const operation = query.get("operation");
   const range = parseInt(query.get("range"));
   const language = query.get("language");
+  
+  // State variables
   const [operationText, setOperationText] = useState("");
   const [results, setResults] = useState([]);
   const [correctAnswer, setCorrectAnswer] = useState(null);
@@ -30,16 +32,19 @@ function Practice() {
   const [wrongAnswerIndex, setWrongAnswerIndex] = useState(null);
   const [selectedResult, setSelectedResult] = useState(null);
   const [score, setScore] = useState(0);
-  const [bestScore, setBestScore] = useState(
-    () => localStorage.getItem("bestScore") || 0
-  );
+  const [bestScore, setBestScore] = useState(() => localStorage.getItem("bestScore") || 0);
   const [timer, setTimer] = useState(180);
   const [problemsSolved, setProblemsSolved] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [h2Text, setH2Text] = useState("");
   const [userInput, setUserInput] = useState("");
+  const [helpIndex, setHelpIndex] = useState(0);
+
+  // Refs
+  const inputRef = useRef(null); 
   const intervalRef = useRef(null);
 
+  // Initial setup and interval for timer
   useEffect(() => {
     generateOperationAndResults(
       operation,
@@ -51,9 +56,10 @@ function Practice() {
       setWrongAnswerIndex,
       setSelectedResult,
       setH2Text,
-      wordList,
-      setUserInput,
+      labels[language].wordList,
+      setUserInput
     );
+    setHelpIndex(0);
     intervalRef.current = setInterval(() => {
       setTimer((prevTime) => {
         if (prevTime === 0) {
@@ -65,15 +71,18 @@ function Practice() {
       });
     }, 1000);
 
+    // Clear interval on component unmount
     return () => clearInterval(intervalRef.current);
-  }, [operation, range, language]);
+  }, [operation, range, language, labels[language].wordList]);
 
+  // Increment problemsSolved on correct answer
   useEffect(() => {
     if (isCorrect) {
       setProblemsSolved((prev) => prev + 1);
     }
   }, [isCorrect]);
 
+  // Handle restart button click
   const handleRestartClick = () => {
     generateOperationAndResults(
       operation,
@@ -85,9 +94,10 @@ function Practice() {
       setWrongAnswerIndex,
       setSelectedResult,
       setH2Text,
-      wordList,
+      labels[language].wordList,
       setUserInput
     );
+    setHelpIndex(0);
     setScore(0);
     setShowModal(false);
     setProblemsSolved(0);
@@ -104,18 +114,36 @@ function Practice() {
     }, 1000);
   };
 
+  // Focus input field if it exists
+  if (inputRef.current) {
+    inputRef.current.focus();
+  }
+
+  // Handle input field change
   const handleInputChange = (e) => {
     setUserInput(e.target.value);
   };
 
+  // Close modal
   const closeModal = () => {
     setShowModal(false);
   };
 
+  // Handle help button click
+  const handleHelpClick = () => {
+    if (correctAnswer && helpIndex < correctAnswer.length) {
+      const helpCharacter = correctAnswer[helpIndex];
+      setUserInput((prevInput) => prevInput + helpCharacter);
+      setHelpIndex((prevIndex) => prevIndex + 1);
+      inputRef.current.focus();
+    }
+  };
+
+  // Check and set best score
   useEffect(() => {
     if (showModal) {
       const currentBestScore = localStorage.getItem("bestScore") || 0;
-      if (score > currentBestScore) {
+      if (score >= currentBestScore) {
         localStorage.setItem("bestScore", score);
         setBestScore(score);
         playFireworkSound(record);
@@ -133,14 +161,24 @@ function Practice() {
       <div>
         <img src={topL} alt="" />
       </div>
-      <WelcomePractice home={texts.home} operation={operation} h2Text={h2Text} text={texts.title} write={texts.write}/>
+      <WelcomePractice
+        home={texts.home}
+        operation={operation}
+        h2Text={h2Text}
+        text={texts.title}
+        write={texts.write}
+      />
       <div>
         <img src={topR} alt="" />
       </div>
       <div></div>
       <div className={styles.container}>
         <div className={styles.operation}>
-        <p>{operation === "read-write" ? operationText : `${operationText} = ?`}</p>
+          <p>
+            {operation === "read-write"
+              ? operationText
+              : `${operationText} = ?`}
+          </p>
         </div>
         <ResultsContainer
           results={results}
@@ -163,7 +201,14 @@ function Practice() {
           setWrongAnswerIndex={setWrongAnswerIndex}
           generateOperationAndResults={generateOperationAndResults}
           wordList={labels[language].wordList}
+          setHelpIndex={setHelpIndex}
+          inputRef={inputRef}
         />
+        {operation === "read-write" && (
+          <button className={styles.helpButton} onClick={handleHelpClick}>
+            {texts.helpRequest}
+          </button>
+        )}
         {showModal && (
           <Modal
             closeModal={closeModal}
