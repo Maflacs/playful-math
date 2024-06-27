@@ -131,13 +131,15 @@ function Practice() {
 
   // Handle help button click
   const handleHelpClick = () => {
-    if (correctAnswer && helpIndex < correctAnswer.length) {
-      const helpCharacter = correctAnswer[helpIndex];
+    if (correctAnswer && userInput.length < correctAnswer.length) {
+      const nextCharIndex = userInput.length; // Calculate the next character index based on current input length
+      const helpCharacter = correctAnswer[nextCharIndex];
       setUserInput((prevInput) => prevInput + helpCharacter);
-      setHelpIndex((prevIndex) => prevIndex + 1);
+      setHelpIndex(nextCharIndex + 1); // Update helpIndex to reflect the new character added
       inputRef.current.focus();
     }
   };
+  
 
   // Check and set best score
   useEffect(() => {
