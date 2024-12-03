@@ -44,18 +44,19 @@ export const generateOperationAndResults = (
         }
         break;
       case "mul-div":
+        range = 100;
         if (Math.random() < 0.5) {
-          num1 = Math.floor(Math.random() * range) + 1;
-          num2 = Math.floor(Math.random() * range) + 1;
+          num1 = Math.floor(Math.random() * 10) + 1;
+          num2 = Math.floor(Math.random() * 10) + 1;
           text = `${num1} × ${num2}`;
           correctResult = num1 * num2;
         } else {
-          num1 = Math.floor(Math.random() * range) + 1;
-          num2 = Math.floor(Math.random() * range) + 1;
+          num1 = Math.floor(Math.random() * 10) + 1;
+          num2 = Math.floor(Math.random() * 10) + 1;
           correctResult = num1 * num2;
-          while (correctResult > range || num1 % num2 !== 0 || num1 / num2 > range) {
-            num1 = Math.floor(Math.random() * range) + 1;
-            num2 = Math.floor(Math.random() * range) + 1;
+          while ( num1 % num2 !== 0 ) {
+            num1 = Math.floor(Math.random() * 10) + 1;
+            num2 = Math.floor(Math.random() * 10) + 1;
             correctResult = num1 * num2;
           }
           text = `${num1} ÷ ${num2}`;

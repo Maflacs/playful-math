@@ -39,10 +39,12 @@ function Practice() {
   const [h2Text, setH2Text] = useState("");
   const [userInput, setUserInput] = useState("");
   const [helpIndex, setHelpIndex] = useState(0);
+  const [usedProblems, setUsedProblems] = useState(new Set());
 
   // Refs
   const inputRef = useRef(null); 
   const intervalRef = useRef(null);
+  
 
   // Initial setup and interval for timer
   useEffect(() => {
@@ -84,6 +86,7 @@ function Practice() {
 
   // Handle restart button click
   const handleRestartClick = () => {
+    setUsedProblems(new Set());
     generateOperationAndResults(
       operation,
       range,
